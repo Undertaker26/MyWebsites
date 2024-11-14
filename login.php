@@ -19,10 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->fetch();
 
         if (password_verify($password, $hashed_password)) {
-            // Password is correct, set the session variables
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_role'] = $user_role;
-            $_SESSION['login_success'] = true; // Set session variable for successful login
+            $_SESSION['login_success'] = true;
 
             if ($user_role == 'admin') {
                 header('Location: admin/admin_dashboard.php');
@@ -48,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/logo2.png"  type="image/x-icon"/>
+    <link rel="icon" href="images/logo2.png" type="image/x-icon"/>
     <title>Login</title>
     <style>
         body {
@@ -126,6 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="checkbox" name="remember"> Remember me
             <button type="submit">Login</button>
         </form>
-   </div>
+        <p>Don’t have an account? <a href="register.php" class="register-link">Register here</a></p>
+    </div>
 </body>
 </html>
